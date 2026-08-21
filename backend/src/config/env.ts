@@ -3,6 +3,8 @@ import z from "zod";
 const envSchema = z.object({
   DATABASE_PATH: z.string().min(1).default('./data/todo.sqlite'),
   NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
+  FRONTEND_ORIGIN: z.string().url().default('http://localhost:5173'),
+  PORT: z.coerce.number().int().positive().default(3000),
 });
 
 export type Env = z.infer<typeof envSchema>;
