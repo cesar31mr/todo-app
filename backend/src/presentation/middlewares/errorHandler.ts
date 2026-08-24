@@ -1,19 +1,5 @@
 import type { NextFunction, Request, Response } from 'express';
-
-/**
- * Error de dominio/aplicación con código HTTP asociado.
- * Los use cases lanzarán este tipo de error (o subtipos) en vez de
- * errores genéricos, para que el handler sepa qué status devolver.
- */
-export class AppError extends Error {
-  constructor(
-    message: string,
-    public readonly statusCode: number = 400
-  ) {
-    super(message);
-    this.name = 'AppError';
-  }
-}
+import { AppError } from '../../domain/errors/AppError.js';
 
 /**
  * Middleware de manejo de errores centralizado.
